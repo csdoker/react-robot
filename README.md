@@ -1,2 +1,3 @@
 # react-robot
-A robot site app with react
+
+A robot gallery website with react
