@@ -29,6 +29,14 @@ class App extends React.Component<Props, State> {
     })
   }
 
+  // shouldComponentUpdate (nextProps, nextState) {
+  //   return nextProps.some !== this.state.some
+  // }
+
+  // componentDidUpdate () {}
+
+  // componentWillUnmount () {}
+
   render () {
     return (
       <div className={styles.app}>
