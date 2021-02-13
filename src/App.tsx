@@ -5,9 +5,7 @@ import logo from "./assets/images/logo.svg";
 import Robot from "./components/Robot";
 import ShoppingCart from "./components/ShoppingCart";
 
-interface Props {
-  username: string
-}
+interface Props {}
 
 interface State {
   robotGallery: any[];
@@ -50,7 +48,6 @@ const App: React.FC<Props> = (props) => {
         <img className={styles.appLogo} src={logo} alt="" />
         <h1>机器人购物平台</h1>
       </div>
-      <h2>{props.username}</h2>
       <button
         onClick={() => {
           setCount(count + 1);

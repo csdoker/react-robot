@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { createContext } from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 
-const username = 'csdoker'
+const defaultContextValue = {
+  username: 'csdoker'
+}
+export const appContext = createContext(defaultContextValue)
 
 ReactDOM.render(
   <React.StrictMode>
-    <App username={username} />
+    <appContext.Provider value={defaultContextValue}>
+      <App />
+    </appContext.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 )
