@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './App.module.css'
 import logo from './assets/images/logo.svg'
 // import robots from './mock/robots.json'
@@ -14,14 +14,18 @@ interface State {
 
 const App: React.FC = () => {
   const [count, setCount] = useState<number>(0)
+  const [robotGallery, setRobotGallery] = useState<any>([])
 
-  // componentDidMount () {
-  //   fetch('http://jsonplaceholder.typicode.com/users').then(response => response.json()).then(data => {
-  //     this.setState({
-  //       robotGallery: data
-  //     })
-  //   })
-  // }
+  useEffect(() => {
+    document.title = `点击${count}次`
+  }, [count])
+
+  useEffect(() => {
+    fetch('http://jsonplaceholder.typicode.com/users').then(response => response.json()).then(data => {
+      setRobotGallery(data)
+    })
+  }, [])
+
   return (
     <div className={styles.app}>
       <div className={styles.appHeader}>
@@ -33,9 +37,9 @@ const App: React.FC = () => {
       }}>Click</button>
       <span>count: {count}</span>
       <ShoppingCart />
-      {/* <div className={styles.robotList}>
-        {this.state.robotGallery.map(robot => <Robot id={robot.id} email={robot.email} name={robot.name} />)}
-      </div> */}
+      <div className={styles.robotList}>
+        {robotGallery.map(robot => <Robot id={robot.id} email={robot.email} name={robot.name} />)}
+      </div>
     </div>
   )
 }
